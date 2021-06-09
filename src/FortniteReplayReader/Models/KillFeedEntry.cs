@@ -17,6 +17,8 @@ namespace FortniteReplayReader.Models
         public ItemType ItemType { get; internal set; }
         public int ItemId => DeathCause == EDeathCause.EDeathCause_MAX ? 0 : (int)DeathCause;
         public EDeathCause DeathCause { get; internal set; } = EDeathCause.EDeathCause_MAX;
+        
+        public FVector DeathLocation { get; internal set; }
 
         public float DeltaGameTimeSeconds { get; internal set; }
         public float Distance { get; internal set; }

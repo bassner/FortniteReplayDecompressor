@@ -270,6 +270,7 @@ namespace FortniteReplayReader.Models
                     entry.CurrentPlayerState = playerState.bDBNO == true ? PlayerState.Knocked : PlayerState.Killed;
 
                     entry.DeathCause = playerState.DeathCause;
+                    entry.DeathLocation = playerState.DeathLocation;
 
                     if (entry.DeathCause == EDeathCause.EDeathCause_MAX)
                     {
@@ -290,6 +291,7 @@ namespace FortniteReplayReader.Models
                     entry.FinisherOrDowner = eliminator;
                     entry.CurrentPlayerState = PlayerState.Killed;
                     entry.DeathCause = playerState.DeathCause;
+                    entry.DeathLocation = playerState.DeathLocation;
                 }
             }
 
@@ -512,14 +514,14 @@ namespace FortniteReplayReader.Models
 
                     //Update movement info
                     playerActor.MovementInformation.Skydiving = playerPawnC.bIsSkydiving ?? playerActor.MovementInformation.Skydiving;
+                    playerActor.MovementInformation.SkydivingFromBus = playerPawnC.bIsSkydivingFromBus ?? playerActor.MovementInformation.SkydivingFromBus;
                     playerActor.MovementInformation.Crouched = playerPawnC.bIsCrouched ?? playerActor.MovementInformation.Crouched;
                     playerActor.MovementInformation.GliderOpen = playerPawnC.bIsParachuteOpen ?? playerActor.MovementInformation.GliderOpen;
                     playerActor.MovementInformation.IsEmoting = playerPawnC.bIsPlayingEmote ?? playerActor.MovementInformation.IsEmoting;
                     playerActor.MovementInformation.IsInteracting = playerPawnC.bStartedInteractSearch ?? playerActor.MovementInformation.IsInteracting;
                     playerActor.MovementInformation.IsSlopeSliding = playerPawnC.bIsSlopeSliding ?? playerActor.MovementInformation.IsSlopeSliding;
                     playerActor.MovementInformation.IsTargeting = playerPawnC.bIsTargeting ?? playerActor.MovementInformation.IsTargeting;
-                    playerActor.MovementInformation.Sprinting = playerPawnC.CurrentMovementStyle != EFortMovementStyle.EFortMovementStyle_MAX ?
-                        playerPawnC.CurrentMovementStyle == EFortMovementStyle.Sprinting : playerActor.MovementInformation.Sprinting;
+                    playerActor.MovementInformation.Sprinting = playerPawnC.CurrentMovementStyle != EFortMovementStyle.EFortMovementStyle_MAX ? playerPawnC.CurrentMovementStyle == EFortMovementStyle.Sprinting : playerActor.MovementInformation.Sprinting;
                     playerActor.MovementInformation.JumpedForceApplied = playerPawnC.bProxyIsJumpForceApplied ?? playerActor.MovementInformation.JumpedForceApplied;
                     playerActor.MovementInformation.IsInWater = playerPawnC.ReplicatedWaterBody != null ? playerPawnC.ReplicatedWaterBody.Value > 0 : playerActor.MovementInformation.IsInWater;
 
